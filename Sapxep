@@ -39,7 +39,48 @@ def insertionSort(theSeq):
             pos -= 1
         # Đặt value vào vị trí đã tìm được
         theSeq[pos] = value
- 
+def mergeOrderedLists(ListA, ListB):
+    newList = list()
+    a = 0
+    b = 0
+
+    # Trộn 2 danh sách cùng nhau đến khi hết 1 danh sách
+    while a < len(ListA) and b < len(ListB):
+        if ListA[a] < ListB[b]:
+            newList.append(ListA[a])
+            a += 1
+        else:
+            newList.append(ListB[b])
+            b += 1
+
+    # Thêm phần tử còn lại của ListA vào newList
+    while a < len(ListA):
+        newList.append(ListA[a])
+        a += 1
+
+    # Thêm phần tử còn lại của ListB vào newList
+    while b < len(ListB):
+        newList.append(ListB[b])
+        b += 1
+
+    return newList
+
+# Sắp xếp dãy tăng dần theo giải thuật sắp xếp trộn:
+def pythonMergeSort(theList):
+    # Kiểm tra trường hợp cơ sở - danh sách chứa 1 phần tử
+    if len(theList) <= 1:
+        return theList
+    else:
+        # Tính vị trí chính giữa
+        mid = len(theList) // 2
+        # Tách dãy và thực hiện các bước gọi đệ quy
+        leftHalf = pythonMergeSort(theList[:mid])
+        rightHalf = pythonMergeSort(theList[mid:])
+
+        # Trộn hai phần tử đã xếp
+        newList = mergeOrderedLists(leftHalf, rightHalf)
+        return newList
+
 day = [1,5,4,2,3,8,9]
 selectionSort(day)
 print("Day sau khi sap xep theo kieu lua chon: ")
@@ -50,3 +91,6 @@ print(day)
 insertionSort(day)
 print("Dãy sau khi sắp xếp theo kiểu chèn:")
 print(day)
+sorted_day = pythonMergeSort(day)
+print("Dãy sau khi sắp xếp theo kiểu trộn:")
+print(sorted_day)
