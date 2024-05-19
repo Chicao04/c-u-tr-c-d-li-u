@@ -1,0 +1,22 @@
+# Lớp
+class ListNode(object): 
+    def __init__(self , data):
+        self.data = data 
+        self.next = None 
+class Stack: 
+    def __init__(self):
+        self._top = None 
+        self._size =  0 
+        
+    def isEmpty(self):
+        return self._top is None 
+    
+    def lenght(self):
+        return self._size 
+    
+    def getTop(self): 
+        assert not self.isEmpty( 
+
+
+a = ListNode(15)
+b = ListNode(63) 
